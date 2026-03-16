@@ -225,6 +225,10 @@ The dimensions are language-universal. Tested primarily on English, but the fram
 **Can I edit the style profile?**
 Absolutely. The JSON is human-readable. Bump up the humor, dial down the formality, change the vocabulary tier — it's your profile to tune.
 
+## Also By OneSpiral
+
+- **[code-autopsy](https://github.com/OneSpiral/code-autopsy)** — Forensic codebase analysis. 16 diagnostics, health score, complexity heatmap, risk matrix, interactive HTML reports.
+
 ## License
 
 MIT — do whatever you want with it.
