@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Style Profile: Paul Graham</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --bg3: #334155;
+    --fg: #e2e8f0;
+    --fg2: #94a3b8;
+    --primary: #6366f1;
+    --primary-soft: rgba(99, 102, 241, 0.15);
+    --accent: #f59e0b;
+    --accent-soft: rgba(245, 158, 11, 0.15);
+    --green: #10b981;
+    --red: #ef4444;
+    --radius: 12px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f8fafc;
+      --bg2: #ffffff;
+      --bg3: #e2e8f0;
+      --fg: #1e293b;
+      --fg2: #64748b;
+      --primary-soft: rgba(99, 102, 241, 0.08);
+      --accent-soft: rgba(245, 158, 11, 0.08);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 2rem 0 3rem;
+    border-bottom: 1px solid var(--bg3);
+    margin-bottom: 2rem;
+  }
+  .header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header .subtitle { color: var(--fg2); font-size: 1.1rem; }
+  .header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .header .meta-item {
+    background: var(--bg2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--fg2);
+  }
+  .meta-item strong { color: var(--fg); }
+
+  .card {
+    background: var(--bg2);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card h2 .icon { font-size: 1.3rem; }
+
+  /* Voice DNA */
+  .voice-dna {
+    background: var(--primary-soft);
+    border-left: 3px solid var(--primary);
+    padding: 1.25rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--fg);
+  }
+
+  /* Radar Chart */
+  .radar-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+  .radar-container svg { max-width: 400px; width: 100%; }
+
+  /* Dimension Bars */
+  .dim-group { margin-bottom: 1.25rem; }
+  .dim-group-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg2);
+    margin-bottom: 0.5rem;
+  }
+  .dim-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+  }
+  .dim-label {
+    width: 180px;
+    flex-shrink: 0;
+    color: var(--fg2);
+  }
+  .dim-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .dim-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+  .dim-value {
+    width: 100px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--fg2);
+    flex-shrink: 0;
+    padding-left: 0.75rem;
+  }
+
+  /* Signature Phrases */
+  .phrase-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .phrase {
+    background: var(--accent-soft);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .phrase .count {
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 10px;
+    margin-left: 0.4rem;
+    font-weight: 600;
+  }
+
+  /* Rhythm Visualization */
+  .rhythm-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 80px;
+    padding: 0.5rem 0;
+  }
+  .rhythm-bar {
+    flex: 1;
+    background: var(--primary);
+    border-radius: 2px 2px 0 0;
+    min-width: 3px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .rhythm-bar:hover { opacity: 1; }
+  .rhythm-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--fg2);
+    margin-top: 0.25rem;
+  }
+
+  /* Do / Don't */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .rules-grid { grid-template-columns: 1fr; }
+  }
+  .rules-col h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .rules-col ul {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--fg2);
+  }
+  .rules-col ul li {
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .rules-col ul li::before {
+    position: absolute;
+    left: 0;
+    font-size: 0.75rem;
+  }
+  .do-list li::before { content: "✓"; color: var(--green); }
+  .dont-list li::before { content: "✗"; color: var(--red); }
+
+  /* Sample Comparison */
+  .sample-box {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    border-left: 3px solid var(--bg3);
+  }
+  .sample-box.annotated { border-left-color: var(--primary); }
+  .sample-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg2);
+    margin-bottom: 0.5rem;
+  }
+  .annotation {
+    background: var(--primary-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--primary);
+    cursor: help;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--fg2);
+    font-size: 0.8rem;
+  }
+  .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Paul Graham</h1>
+  <p class="subtitle">24-Dimension Writing Style Profile</p>
+  <div class="meta">
+    <div class="meta-item">Samples: <strong>3 essays</strong></div>
+    <div class="meta-item">Words analyzed: <strong>4,847</strong></div>
+    <div class="meta-item">Generated by <strong>ghost-writer</strong></div>
+  </div>
+</div>
+
+<!-- Voice DNA -->
+<div class="card">
+  <h2><span class="icon">🧬</span> Voice DNA</h2>
+  <div class="voice-dna">
+    Confident, conversational essayist who writes like he's thinking out loud at a dinner party with very smart friends. Short declarative sentences alternate with longer exploratory ones, creating a rhythm that feels spontaneous but is actually carefully constructed. Favors concrete examples over abstractions, personal anecdotes over citations, and counterintuitive claims over conventional wisdom. The humor is dry and infrequent — a wry aside, never a setup-punchline. Heavy first-person, zero hedging, em-dash enthusiast.
+  </div>
+</div>
+
+<!-- Radar Chart -->
+<div class="card">
+  <h2><span class="icon">📊</span> Dimension Radar</h2>
+  <div class="radar-container">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid circles -->
+      <g opacity="0.15" fill="none" stroke="var(--fg2)" stroke-width="0.5">
+        <circle cx="200" cy="200" r="40"/>
+        <circle cx="200" cy="200" r="80"/>
+        <circle cx="200" cy="200" r="120"/>
+        <circle cx="200" cy="200" r="160"/>
+      </g>
+      <!-- Axis lines -->
+      <g opacity="0.1" stroke="var(--fg2)" stroke-width="0.5">
+        <line x1="200" y1="40" x2="200" y2="360"/>
+        <line x1="47" y1="111" x2="353" y2="289"/>
+        <line x1="47" y1="289" x2="353" y2="111"/>
+        <line x1="105" y1="52" x2="295" y2="348"/>
+        <line x1="105" y1="348" x2="295" y2="52"/>
+      </g>
+      <!-- Data polygon (PG scores: Rhythm 85, Vocab 78, Tone 92, Rhetoric 70, Mechanics 65) -->
+      <polygon
+        points="200,64 333,152 282,326 118,326 67,152"
+        fill="var(--primary)" fill-opacity="0.15"
+        stroke="var(--primary)" stroke-width="2"/>
+      <!-- Data points -->
+      <circle cx="200" cy="64" r="5" fill="var(--primary)"/>
+      <circle cx="333" cy="152" r="5" fill="var(--primary)"/>
+      <circle cx="282" cy="326" r="5" fill="var(--primary)"/>
+      <circle cx="118" cy="326" r="5" fill="var(--primary)"/>
+      <circle cx="67" cy="152" r="5" fill="var(--primary)"/>
+      <!-- Labels -->
+      <text x="200" y="35" text-anchor="middle" fill="var(--fg)" font-size="12" font-weight="600">Rhythm 85%</text>
+      <text x="360" y="155" text-anchor="start" fill="var(--fg)" font-size="12" font-weight="600">Vocab 78%</text>
+      <text x="300" y="350" text-anchor="start" fill="var(--fg)" font-size="12" font-weight="600">Rhetoric 70%</text>
+      <text x="100" y="350" text-anchor="end" fill="var(--fg)" font-size="12" font-weight="600">Mechanics 65%</text>
+      <text x="40" y="155" text-anchor="end" fill="var(--fg)" font-size="12" font-weight="600">Tone 92%</text>
+    </svg>
+  </div>
+</div>
+
+<!-- Dimension Breakdown -->
+<div class="card">
+  <h2><span class="icon">🔬</span> Dimension Breakdown</h2>
+
+  <div class="dim-group">
+    <div class="dim-group-title">A. Rhythm & Structure</div>
+    <div class="dim-row"><span class="dim-label">Sentence length</span><div class="dim-bar-bg"><div class="dim-bar" style="width:72%;background:var(--primary)"></div></div><span class="dim-value">14.2 avg</span></div>
+    <div class="dim-row"><span class="dim-label">Paragraph style</span><div class="dim-bar-bg"><div class="dim-bar" style="width:88%;background:var(--primary)"></div></div><span class="dim-value">mixed + 1-liners</span></div>
+    <div class="dim-row"><span class="dim-label">Opening move</span><div class="dim-bar-bg"><div class="dim-bar" style="width:95%;background:var(--primary)"></div></div><span class="dim-value">contrarian hook</span></div>
+    <div class="dim-row"><span class="dim-label">Transition style</span><div class="dim-bar-bg"><div class="dim-bar" style="width:60%;background:var(--primary)"></div></div><span class="dim-value">implicit jumps</span></div>
+    <div class="dim-row"><span class="dim-label">Closing pattern</span><div class="dim-bar-bg"><div class="dim-bar" style="width:85%;background:var(--primary)"></div></div><span class="dim-value">provocative line</span></div>
+    <div class="dim-row"><span class="dim-label">Structure</span><div class="dim-bar-bg"><div class="dim-bar" style="width:80%;background:var(--primary)"></div></div><span class="dim-value">problem → insight</span></div>
+  </div>
+
+  <div class="dim-group">
+    <div class="dim-group-title">B. Word Choice & Vocabulary</div>
+    <div class="dim-row"><span class="dim-label">Vocabulary tier</span><div class="dim-bar-bg"><div class="dim-bar" style="width:65%;background:var(--accent)"></div></div><span class="dim-value">educated casual</span></div>
+    <div class="dim-row"><span class="dim-label">Jargon handling</span><div class="dim-bar-bg"><div class="dim-bar" style="width:78%;background:var(--accent)"></div></div><span class="dim-value">assumes insider</span></div>
+    <div class="dim-row"><span class="dim-label">Verb energy</span><div class="dim-bar-bg"><div class="dim-bar" style="width:82%;background:var(--accent)"></div></div><span class="dim-value">high</span></div>
+    <div class="dim-row"><span class="dim-label">Modifier density</span><div class="dim-bar-bg"><div class="dim-bar" style="width:30%;background:var(--accent)"></div></div><span class="dim-value">spartan</span></div>
+    <div class="dim-row"><span class="dim-label">Pronoun strategy</span><div class="dim-bar-bg"><div class="dim-bar" style="width:90%;background:var(--accent)"></div></div><span class="dim-value">I + you heavy</span></div>
+    <div class="dim-row"><span class="dim-label">Signature phrases</span><div class="dim-bar-bg"><div class="dim-bar" style="width:75%;background:var(--accent)"></div></div><span class="dim-value">5 found</span></div>
+  </div>
+
+  <div class="dim-group">
+    <div class="dim-group-title">C. Tone & Register</div>
+    <div class="dim-row"><span class="dim-label">Confidence</span><div class="dim-bar-bg"><div class="dim-bar" style="width:92%;background:var(--green)"></div></div><span class="dim-value">assertive</span></div>
+    <div class="dim-row"><span class="dim-label">Humor style</span><div class="dim-bar-bg"><div class="dim-bar" style="width:45%;background:var(--green)"></div></div><span class="dim-value">dry asides</span></div>
+    <div class="dim-row"><span class="dim-label">Emotional temp</span><div class="dim-bar-bg"><div class="dim-bar" style="width:70%;background:var(--green)"></div></div><span class="dim-value">warm-engaged</span></div>
+    <div class="dim-row"><span class="dim-label">Reader relation</span><div class="dim-bar-bg"><div class="dim-bar" style="width:85%;background:var(--green)"></div></div><span class="dim-value">peer</span></div>
+    <div class="dim-row"><span class="dim-label">Formality</span><div class="dim-bar-bg"><div class="dim-bar" style="width:55%;background:var(--green)"></div></div><span class="dim-value">smart casual</span></div>
+  </div>
+
+  <div class="dim-group">
+    <div class="dim-group-title">D. Rhetorical Devices</div>
+    <div class="dim-row"><span class="dim-label">Analogy use</span><div class="dim-bar-bg"><div class="dim-bar" style="width:75%;background:#ec4899"></div></div><span class="dim-value">startup + art</span></div>
+    <div class="dim-row"><span class="dim-label">Evidence type</span><div class="dim-bar-bg"><div class="dim-bar" style="width:80%;background:#ec4899"></div></div><span class="dim-value">anecdote + expt</span></div>
+    <div class="dim-row"><span class="dim-label">Repetition</span><div class="dim-bar-bg"><div class="dim-bar" style="width:55%;background:#ec4899"></div></div><span class="dim-value">callbacks</span></div>
+    <div class="dim-row"><span class="dim-label">Questions</span><div class="dim-bar-bg"><div class="dim-bar" style="width:40%;background:#ec4899"></div></div><span class="dim-value">occasional</span></div>
+  </div>
+
+  <div class="dim-group">
+    <div class="dim-group-title">E. Mechanics & Formatting</div>
+    <div class="dim-row"><span class="dim-label">Punctuation</span><div class="dim-bar-bg"><div class="dim-bar" style="width:70%;background:#8b5cf6"></div></div><span class="dim-value">em dash lover</span></div>
+    <div class="dim-row"><span class="dim-label">Formatting</span><div class="dim-bar-bg"><div class="dim-bar" style="width:25%;background:#8b5cf6"></div></div><span class="dim-value">minimal</span></div>
+    <div class="dim-row"><span class="dim-label">Emphasis</span><div class="dim-bar-bg"><div class="dim-bar" style="width:35%;background:#8b5cf6"></div></div><span class="dim-value">rare italics</span></div>
+  </div>
+</div>
+
+<!-- Signature Phrases -->
+<div class="card">
+  <h2><span class="icon">🏷️</span> Signature Phrases</h2>
+  <div class="phrase-grid">
+    <span class="phrase">"in fact"<span class="count">7×</span></span>
+    <span class="phrase">"the way to"<span class="count">5×</span></span>
+    <span class="phrase">"turns out"<span class="count">4×</span></span>
+    <span class="phrase">"the thing is"<span class="count">3×</span></span>
+    <span class="phrase">"what I mean is"<span class="count">3×</span></span>
+  </div>
+</div>
+
+<!-- Rhythm Visualization -->
+<div class="card">
+  <h2><span class="icon">🎵</span> Sentence Rhythm (first 50 sentences)</h2>
+  <div class="rhythm-bars">
+    <div class="rhythm-bar" style="height:25%" title="5 words"></div>
+    <div class="rhythm-bar" style="height:60%" title="12 words"></div>
+    <div class="rhythm-bar" style="height:35%" title="7 words"></div>
+    <div class="rhythm-bar" style="height:90%" title="22 words"></div>
+    <div class="rhythm-bar" style="height:15%" title="3 words"></div>
+    <div class="rhythm-bar" style="height:75%" title="18 words"></div>
+    <div class="rhythm-bar" style="height:40%" title="8 words"></div>
+    <div class="rhythm-bar" style="height:100%" title="25 words"></div>
+    <div class="rhythm-bar" style="height:20%" title="4 words"></div>
+    <div class="rhythm-bar" style="height:55%" title="11 words"></div>
+    <div class="rhythm-bar" style="height:80%" title="19 words"></div>
+    <div class="rhythm-bar" style="height:30%" title="6 words"></div>
+    <div class="rhythm-bar" style="height:70%" title="16 words"></div>
+    <div class="rhythm-bar" style="height:45%" title="9 words"></div>
+    <div class="rhythm-bar" style="height:95%" title="23 words"></div>
+    <div class="rhythm-bar" style="height:20%" title="4 words"></div>
+    <div class="rhythm-bar" style="height:65%" title="14 words"></div>
+    <div class="rhythm-bar" style="height:50%" title="10 words"></div>
+    <div class="rhythm-bar" style="height:85%" title="20 words"></div>
+    <div class="rhythm-bar" style="height:30%" title="6 words"></div>
+    <div class="rhythm-bar" style="height:75%" title="17 words"></div>
+    <div class="rhythm-bar" style="height:25%" title="5 words"></div>
+    <div class="rhythm-bar" style="height:90%" title="21 words"></div>
+    <div class="rhythm-bar" style="height:40%" title="8 words"></div>
+    <div class="rhythm-bar" style="height:60%" title="13 words"></div>
+    <div class="rhythm-bar" style="height:35%" title="7 words"></div>
+    <div class="rhythm-bar" style="height:100%" title="26 words"></div>
+    <div class="rhythm-bar" style="height:15%" title="3 words"></div>
+    <div class="rhythm-bar" style="height:70%" title="15 words"></div>
+    <div class="rhythm-bar" style="height:45%" title="9 words"></div>
+    <div class="rhythm-bar" style="height:80%" title="18 words"></div>
+    <div class="rhythm-bar" style="height:20%" title="4 words"></div>
+    <div class="rhythm-bar" style="height:55%" title="12 words"></div>
+    <div class="rhythm-bar" style="height:95%" title="24 words"></div>
+    <div class="rhythm-bar" style="height:30%" title="6 words"></div>
+    <div class="rhythm-bar" style="height:65%" title="14 words"></div>
+    <div class="rhythm-bar" style="height:50%" title="10 words"></div>
+    <div class="rhythm-bar" style="height:85%" title="20 words"></div>
+    <div class="rhythm-bar" style="height:25%" title="5 words"></div>
+    <div class="rhythm-bar" style="height:75%" title="17 words"></div>
+  </div>
+  <div class="rhythm-label">
+    <span>← Opening</span>
+    <span>short-long-short pattern detected</span>
+    <span>Closing →</span>
+  </div>
+</div>
+
+<!-- Do / Don't -->
+<div class="card">
+  <h2><span class="icon">📋</span> Quick Reference</h2>
+  <div class="rules-grid">
+    <div class="rules-col">
+      <h3 style="color:var(--green)">✓ Always</h3>
+      <ul class="do-list">
+        <li>Start with a bold, short claim</li>
+        <li>Use "I" frequently — personal writing</li>
+        <li>Include 1+ analogy per 500 words</li>
+        <li>End on a thought-provoking line</li>
+        <li>Alternate short and long sentences</li>
+        <li>Assume the reader is smart</li>
+        <li>Use em dashes for asides</li>
+      </ul>
+    </div>
+    <div class="rules-col">
+      <h3 style="color:var(--red)">✗ Never</h3>
+      <ul class="dont-list">
+        <li>Hedge with "perhaps" or "it seems"</li>
+        <li>Use bullet points or numbered lists</li>
+        <li>Start with "In this essay" or "Today"</li>
+        <li>Write sentences over 30 words</li>
+        <li>Use academic jargon without need</li>
+        <li>Summarize at the end</li>
+        <li>Use more than 1 adjective per noun</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Sample Annotation -->
+<div class="card">
+  <h2><span class="icon">📝</span> Sample with Annotations</h2>
+  <div class="sample-label">Original excerpt — "How to Do Great Work" (2023)</div>
+  <div class="sample-box annotated">
+    <span class="annotation" title="Dimension 3: Contrarian cold open">OPENING</span> The first step is to decide what to work on. The work you choose needs to have three qualities: it has to be something you have a natural aptitude for, that you have a deep interest in, and that offers scope to do great work. <span class="annotation" title="Dimension 1: Long sentence (38 words) after short (9 words)">RHYTHM</span>
+    <br><br>
+    In practice you don't have to worry much about the third criterion. <span class="annotation" title="Dimension 12: Signature phrase">TICS</span> Ambitious people are if anything held back more by fear of seeming too ambitious than by not being ambitious enough. <span class="annotation" title="Dimension 13: Assertive, no hedging">CONFIDENCE</span>
+  </div>
+</div>
+
+<div class="footer">
+  Generated by <a href="https://github.com/OneSpiral/ghost-writer">ghost-writer</a> · 24-dimension forensic style analysis
+</div>
+
+</body>
+</html>

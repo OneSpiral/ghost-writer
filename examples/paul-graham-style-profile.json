@@ -1,0 +1,100 @@
+{
+  "author": "Paul Graham",
+  "samples_analyzed": 3,
+  "total_words_analyzed": 4847,
+  "generated_by": "ghost-writer v1.0.0",
+  "profile": {
+    "rhythm": {
+      "avg_sentence_length": 14.2,
+      "sentence_length_std_dev": 7.8,
+      "sentence_length_range": [3, 38],
+      "sentence_length_pattern": "short-long-short",
+      "paragraph_avg_sentences": 3.2,
+      "paragraph_style": "mixed with frequent one-sentence paragraphs for emphasis",
+      "opening_move": "contrarian-hook",
+      "opening_examples": [
+        "The first step is to decide what to work on.",
+        "Want to start a startup? Get funded by Y Combinator.",
+        "When I was in high school I spent a lot of time arguing with a teacher who was a bully."
+      ],
+      "transition_style": "implicit-jumps with occasional callbacks",
+      "closing_pattern": "provocative-last-line",
+      "closing_examples": [
+        "If you think something's supposed to hurt, you're less likely to notice if you're doing it wrong.",
+        "It's exciting to think we may be on the edge of another such shift."
+      ],
+      "structure": "problem-exploration-insight"
+    },
+    "vocabulary": {
+      "tier": "educated-casual",
+      "avg_syllables_per_word": 1.4,
+      "complex_word_ratio": 0.08,
+      "jargon_handling": "uses-without-explaining",
+      "jargon_domains": ["startups", "programming", "philosophy"],
+      "verb_energy": "high",
+      "active_voice_ratio": 0.89,
+      "modifier_density": "spartan",
+      "adjectives_per_sentence": 0.6,
+      "adverbs_per_sentence": 0.2,
+      "pronoun_strategy": {
+        "first_person_ratio": 0.42,
+        "second_person_ratio": 0.31,
+        "third_person_ratio": 0.27
+      },
+      "signature_phrases": [
+        { "phrase": "in fact", "frequency": 7 },
+        { "phrase": "the way to", "frequency": 5 },
+        { "phrase": "turns out", "frequency": 4 },
+        { "phrase": "the thing is", "frequency": 3 },
+        { "phrase": "what I mean is", "frequency": 3 }
+      ]
+    },
+    "tone": {
+      "confidence": "assertive",
+      "hedging_frequency": 0.02,
+      "assertion_frequency": 0.15,
+      "humor": {
+        "type": "dry-asides",
+        "frequency": "low — roughly 1 per 500 words",
+        "placement": "mid-argument, never opening"
+      },
+      "temperature": "warm-engaged",
+      "reader_relationship": "peer",
+      "formality": "smart-casual",
+      "contraction_rate": 0.72
+    },
+    "rhetoric": {
+      "analogy_frequency": "1 per 400 words",
+      "analogy_domains": ["startups", "painting", "math", "evolution"],
+      "evidence_strategy": "personal-anecdote + thought-experiment",
+      "repetition_use": "moderate-callbacks",
+      "question_frequency": "occasional-rhetorical",
+      "questions_per_1000_words": 2.1
+    },
+    "mechanics": {
+      "punctuation_personality": "em-dash-lover, parenthetical-asides",
+      "em_dashes_per_1000_words": 4.7,
+      "semicolons_per_1000_words": 0.3,
+      "formatting": "minimal — rare bold, no headers in essays",
+      "emphasis_style": "italics-only, sparingly"
+    }
+  },
+  "do_not": [
+    "Use hedging words like 'perhaps', 'it seems', 'arguably'",
+    "Write sentences longer than 30 words without breaking",
+    "Use bullet points or numbered lists in essays",
+    "Start with 'In this essay' or 'Today we'll explore'",
+    "Use more than one adjective per noun",
+    "Summarize at the end — leave the reader thinking",
+    "Use academic-sounding Latinate words where Anglo-Saxon ones exist"
+  ],
+  "always": [
+    "Start with a bold, short declarative claim or contrarian statement",
+    "Use 'I' frequently — this is personal, opinionated writing",
+    "Include at least one analogy per 500 words, preferably from startups or painting",
+    "End on a thought-provoking line, never a summary or call to action",
+    "Alternate short punchy sentences with longer exploratory ones",
+    "Assume the reader is smart — don't explain obvious things",
+    "Use em dashes for mid-sentence asides and elaborations"
+  ]
+}
