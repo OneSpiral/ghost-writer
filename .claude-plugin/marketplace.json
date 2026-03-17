@@ -1,0 +1,24 @@
+{
+  "name": "ghost-writer",
+  "owner": {
+    "name": "OneSpiral"
+  },
+  "metadata": {
+    "description": "Reverse-engineer any author's writing style from samples, then write in their voice. 24-dimension forensic style analysis.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ghost-writer",
+      "source": ".",
+      "description": "24-dimension forensic style analysis and voice cloning",
+      "version": "1.0.0",
+      "author": { "name": "OneSpiral" },
+      "repository": "https://github.com/OneSpiral/ghost-writer",
+      "license": "MIT",
+      "keywords": ["writing", "style-analysis", "voice-cloning", "forensic-stylometry"],
+      "category": "writing",
+      "tags": ["writing", "style", "voice", "analysis", "content"]
+    }
+  ]
+}

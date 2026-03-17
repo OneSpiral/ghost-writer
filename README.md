@@ -16,6 +16,10 @@
 
 ---
 
+<p align="center">
+  <img src="demo.gif" alt="ghost-writer demo" width="700">
+</p>
+
 Feed ghost-writer 3 blog posts by Paul Graham, and it builds a **24-dimension style profile** — sentence rhythm, vocabulary tier, humor style, rhetorical devices, emotional temperature, and 19 more. Then ask it to write something new. The output reads like Graham wrote it, not like AI imitating Graham.
 
 **Not prompt engineering. Forensic stylometry.**
@@ -84,11 +88,10 @@ Includes:
 
 ## Install
 
-### Claude Code
+### One-line install (auto-detects your agent)
 
 ```bash
-# Clone into skills directory
-git clone https://github.com/OneSpiral/ghost-writer.git ~/.claude/skills/ghost-writer
+curl -fsSL https://raw.githubusercontent.com/OneSpiral/ghost-writer/main/install.sh | bash
 ```
 
 ### Claude Code (Marketplace)
@@ -97,19 +100,23 @@ git clone https://github.com/OneSpiral/ghost-writer.git ~/.claude/skills/ghost-w
 /plugin marketplace add OneSpiral/ghost-writer
 ```
 
-### Codex CLI
+### Manual install
 
 ```bash
+# Claude Code
+git clone https://github.com/OneSpiral/ghost-writer.git ~/.claude/skills/ghost-writer
+
+# Codex CLI
 git clone https://github.com/OneSpiral/ghost-writer.git ~/.codex/skills/ghost-writer
+
+# Pi
+git clone https://github.com/OneSpiral/ghost-writer.git ~/.pi/agent/skills/ghost-writer
+
+# OpenCode
+git clone https://github.com/OneSpiral/ghost-writer.git ~/.opencode/skills/ghost-writer
 ```
 
-### Pi
-
-```bash
-git clone https://github.com/OneSpiral/ghost-writer.git ~/.pi/skills/ghost-writer
-```
-
-### OpenCode / Any Agent
+### Any other agent
 
 Copy `SKILL.md` into your agent's skills directory. That's it — it's a single file.
 

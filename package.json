@@ -1,0 +1,18 @@
+{
+  "name": "ghost-writer",
+  "version": "1.1.0",
+  "description": "Reverse-engineer any author's writing style from samples, then write in their voice. 24-dimension forensic style analysis.",
+  "keywords": [
+    "claude-code-plugin",
+    "agent-skill",
+    "writing",
+    "style-analysis",
+    "forensic-stylometry"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OneSpiral/ghost-writer.git"
+  },
+  "author": "OneSpiral"
+}
